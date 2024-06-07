@@ -11,6 +11,7 @@ namespace Inherit.Entities
         public int ID { get; set; }
         public string? NombreCompleto { get; set; }
         public bool? Fallecido { get; set; } = false;
+        public bool? IsSelected { get; set; } = false;
 
     }
 }

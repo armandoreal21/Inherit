@@ -271,7 +271,7 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" >
-                        <Button Style="{DynamicResource AppGrayButton}" Content="Crear" Width="93" Click="CrearComponente_Click"/>
+                        <Button Style="{DynamicResource AppGrayButton}" Content="Modificar Usuarios" Width="93" Click="CrearRelacion_Click"/>
                     </StackPanel>
 
                     <Grid Grid.Row="2">

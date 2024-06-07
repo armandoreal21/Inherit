@@ -69,6 +69,27 @@ namespace Inherit
             }
         }
 
+        public void ActualizarDatosRelacionDelExcel()
+        {
+            try
+            {
+                DatosCargaExcelRelacion = ExcelHelper.GetListFromExcel<RelacionComponentePersonaExcel>(RutaFicheroRelacion, true);
+
+                foreach (var item in DatosCargaExcelRelacion)
+                {
+                    var nombreComponente = DatosCargaExcelComponente.FirstOrDefault(s => s.ID == item.IDCOMPONENTE);
+                    item.NombreComponente = nombreComponente != null ? nombreComponente.Tipo : string.Empty;
+
+                    var nombrePersona = DatosCargaExcelPersonas.FirstOrDefault(s => s.ID == item.IDPERSONA);
+                    item.NombrePersona = nombrePersona != null ? nombrePersona.NombreCompleto : string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
         TextBlock selectedTabPersonas = new TextBlock();
         private void rbPersonas_Checked(object sender, RoutedEventArgs e)
         {
@@ -341,19 +362,6 @@ namespace Inherit
             // item representa el objeto completo asociado al elemento de ListView que se está editando.
         }
 
-        //private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        //{
-        //    var textBox = sender as TextBox;
-        //    if (textBox != null)
-        //    {
-        //        // Si el texto contiene una ",", la reemplaza con un "."
-        //        if (e.Text == ",")
-        //        {
-        //            e.Handled = true; // Marca el evento como manejado para evitar que se ingrese la ","
-        //            textBox.SelectedText = "."; // Reemplaza la "," con un "."
-        //        }
-        //    }
-        //}
 
         public void cbComponente_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -364,6 +372,21 @@ namespace Inherit
                 RelacionListView.ItemsSource = null;
                 RelacionListView.ItemsSource = DatosCargaExcelRelacion.Where(s=>s.IDCOMPONENTE == selectedItem.ID);
             }
+        }
+
+        private void CrearRelacion_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RelacionFormView usuarioFormView = new RelacionFormView(new RelacionComponentePersonaExcel(), this);
+                usuarioFormView.Show();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+
         }
 
         #endregion
