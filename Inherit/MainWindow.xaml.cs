@@ -161,8 +161,17 @@ namespace Inherit
 
             ActualizarDatosDelExcel();
 
-            RelacionListView.ItemsSource = null;
-            RelacionListView.ItemsSource = DatosCargaExcelRelacion;
+            if (DatosCargaExcelComponente != null && DatosCargaExcelComponente.Count > 0)
+            {
+                cbComponente.ItemsSource = DatosCargaExcelComponente;
+                cbComponente.DisplayMemberPath = "Tipo";
+
+                if (cbComponente.SelectedItem == null )
+                    cbComponente.SelectedIndex = 0;
+            }
+
+            cbComponente_SelectionChanged(null, null);
+            //Seleccion
         }
 
         #region Personas
@@ -345,6 +354,17 @@ namespace Inherit
         //        }
         //    }
         //}
+
+        public void cbComponente_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+
+            if (selectedItem != null) 
+            {
+                RelacionListView.ItemsSource = null;
+                RelacionListView.ItemsSource = DatosCargaExcelRelacion.Where(s=>s.IDCOMPONENTE == selectedItem.ID);
+            }
+        }
 
         #endregion
     }

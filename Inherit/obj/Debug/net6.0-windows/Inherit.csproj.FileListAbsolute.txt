@@ -50,3 +50,5 @@ C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.gen
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\ref\Inherit.dll
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\ComponenteFormView.baml
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\ComponenteFormView.g.cs
+C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\RelacionFormView.baml
+C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\RelacionFormView.g.cs
