@@ -1,0 +1,27 @@
+﻿<Application x:Class="Inherit.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Inherit"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Diccionaries/ResourceDictionary.xaml"/>
+                <ResourceDictionary Source="Diccionaries/AppGrayButton.xaml"/>
+                <ResourceDictionary Source="Diccionaries/DatePicker.xaml"/>
+                <!--<ResourceDictionary Source="Diccionaries/MenuSelected.xaml"/>-->
+                <ResourceDictionary Source="Diccionaries/estiloBotones.xaml"/>
+                <ResourceDictionary Source="Diccionaries/menuStyle.xaml"/>
+                <ResourceDictionary Source="Diccionaries/subMenuStyle.xaml"/>
+                <ResourceDictionary Source="Diccionaries/MyButton.xaml"/>
+                <ResourceDictionary Source="Diccionaries/TextBox.xaml"/>
+                <ResourceDictionary Source="Diccionaries/PasswordBox.xaml"/>
+                <ResourceDictionary Source="Diccionaries/ComboBox.xaml"/>
+                <ResourceDictionary Source="Diccionaries/TableTextBlock.xaml"/>
+                <ResourceDictionary Source="Diccionaries/ListViewItem.xaml"/>
+                <ResourceDictionary Source="Diccionaries/ButtonWithoutStyles.xaml"/>
+                <ResourceDictionary Source="Diccionaries/TabHeaderStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
