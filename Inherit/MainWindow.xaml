@@ -8,7 +8,7 @@
         Title="" Height="500" Width="850">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Resources/ImagenFondo.jpg" Opacity="0.1"/>
+            <ImageBrush ImageSource="/Resources/imagen_fondo.jpg" Opacity="0.05"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -268,6 +268,10 @@
                                         IsEditable="True" IsReadOnly="True" Text="Seleccionar..."
                                       SelectionChanged="cbComponente_SelectionChanged"/>
                         </StackPanel>
+
+
+                        <Label x:Name="lbCantidadComponente" FontSize="14" FontWeight="SemiBold" Margin="10 0 0 0" >Componente</Label>
+
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" >
@@ -312,7 +316,7 @@
                                 <Border Grid.Column="3" BorderThickness="0,0,1,0" BorderBrush="White"/>
                             </Grid>
                         </StackPanel>
-                        <ListView x:Name="RelacionListView" Grid.Row="1" Background="Transparent" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="0">
+                        <ListView x:Name="RelacionListView"  ItemsSource="{Binding RelacionList}" Grid.Row="1" Background="Transparent" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="0">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -330,8 +334,8 @@
                                         <!--<TextBlock Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding NombreComponente}"/>-->
                                         <TextBlock Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding NombrePersona}"/>
                                         <!--PreviewTextInput="TextBox_PreviewTextInput"-->
-                                        <TextBox Grid.Column="2" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Cantidad, Mode=TwoWay}" LostFocus="CantidadTextBox_LostFocus"/>
-                                        <TextBox Grid.Column="3" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Porcentaje, Mode=TwoWay}" LostFocus="PorcentajeTextBox_LostFocus"/>
+                                        <TextBox Grid.Column="2" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Cantidad, StringFormat=F2, Mode=TwoWay}" LostFocus="CantidadTextBox_LostFocus"/>
+                                        <TextBox Grid.Column="3" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Porcentaje, StringFormat=F2, Mode=TwoWay}" LostFocus="PorcentajeTextBox_LostFocus"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -342,6 +346,13 @@
 
                 </Grid>
             </StackPanel>
+
+            <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">
+                <!--<Button Name="HiddenButton" Visibility="Collapsed" Focusable="True"/>-->
+                <Button Style="{StaticResource MyButton}" Margin="2" IsEnabled="True" Click="GuardarDatosModificados_Click">Guardar</Button>
+            </StackPanel>
+
+            
         </Grid>
 
 

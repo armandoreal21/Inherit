@@ -4,6 +4,8 @@ using Microsoft.Extensions.Primitives;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Runtime;
@@ -34,6 +36,42 @@ namespace Inherit
         public List<PersonaExcel> DatosCargaExcelPersonas { get; set; } = new List<PersonaExcel>();
         public List<ComponenteExcel> DatosCargaExcelComponente { get; set; } = new List<ComponenteExcel>();
         public List<RelacionComponentePersonaExcel> DatosCargaExcelRelacion { get; set; } = new List<RelacionComponentePersonaExcel>();
+
+        private ComponenteExcel _selectedComponente;
+
+        public ObservableCollection<RelacionComponentePersonaExcel> RelacionList { get; set; }
+
+        public List<ComponenteExcel> Componentes { get; set; }
+
+        public ComponenteExcel SelectedComponente
+        {
+            get => _selectedComponente;
+            set
+            {
+                if (_selectedComponente != value)
+                {
+                    _selectedComponente = value;
+                    OnPropertyChanged(nameof(SelectedComponente));
+                    UpdateRelacionList();
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void UpdateRelacionList()
+        {
+            foreach (var item in RelacionList)
+            {
+                item.SelectedComponente = SelectedComponente;
+            }
+        }
+
 
         public int MaximoPalabrasRevisadas { get; set; } = 2;
         public List<int> PalabrasYaRevisadas { get; set; } = new List<int>();
@@ -344,22 +382,31 @@ namespace Inherit
 
         private void CantidadTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            // Obtener el objeto completo al que pertenece el TextBox
             var textBox = sender as TextBox;
-            var item = textBox?.DataContext; // El objeto completo asociado al elemento de ListView
+            var item = textBox?.DataContext as RelacionComponentePersonaExcel;
 
-            // Aquí puedes hacer lo que necesites con el objeto completo, por ejemplo, guardar los cambios.
-            // item representa el objeto completo asociado al elemento de ListView que se está editando.
+            if (item != null && item.Cantidad != null)
+            {
+                var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+
+                if (selectedItem != null)                
+                    item.Porcentaje = item.Cantidad * 100 / selectedItem.Cantidad;
+            }
+
         }
 
         private void PorcentajeTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            // Obtener el objeto completo al que pertenece el TextBox
             var textBox = sender as TextBox;
-            var item = textBox?.DataContext; // El objeto completo asociado al elemento de ListView
+            var item = textBox?.DataContext as RelacionComponentePersonaExcel;
 
-            // Aquí puedes hacer lo que necesites con el objeto completo, por ejemplo, guardar los cambios.
-            // item representa el objeto completo asociado al elemento de ListView que se está editando.
+            if (item != null && item.Porcentaje != null)
+            {
+                var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+
+                if (selectedItem != null)
+                    item.Cantidad = (item.Porcentaje /100) * selectedItem.Cantidad;
+            }
         }
 
 
@@ -369,6 +416,8 @@ namespace Inherit
 
             if (selectedItem != null) 
             {
+                ActualizarDatosRelacionDelExcel(); //TODO: sSe podría mantener los datos que vas modificando (en el listado de Relación) eliminando esta linea.
+                lbCantidadComponente.Content = selectedItem.Cantidad + " €";
                 RelacionListView.ItemsSource = null;
                 RelacionListView.ItemsSource = DatosCargaExcelRelacion.Where(s=>s.IDCOMPONENTE == selectedItem.ID);
             }
@@ -389,6 +438,17 @@ namespace Inherit
 
         }
 
+
+        private void GuardarDatosModificados_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         #endregion
+
+        //private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    HiddenButton.Focus();
+        //}
     }
 }
