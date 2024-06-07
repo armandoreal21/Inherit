@@ -143,6 +143,9 @@ namespace GTIC.Sincronizador.Helpers
 
                         foreach (var propiedad in propiedades)
                         {
+                            if (Attribute.IsDefined(propiedad, typeof(NoCopiarAttribute)))                            
+                                continue; // Ignorar propiedades con el atributo NoCopiar
+                            
                             int columnIndex = Array.IndexOf(propiedades, propiedad) + 1;
 
                             object valor = propiedad.GetValue(entidadActualizada);

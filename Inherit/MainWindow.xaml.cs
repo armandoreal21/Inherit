@@ -266,6 +266,7 @@ namespace Inherit
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 throw ex;
 
             }
@@ -299,6 +300,7 @@ namespace Inherit
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 throw ex;
             }
         }
@@ -432,17 +434,48 @@ namespace Inherit
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 throw ex;
 
             }
-
         }
 
 
         private void GuardarDatosModificados_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                if (RelacionListView.ItemsSource == null)
+                    return;
+
+                foreach (var item in RelacionListView.ItemsSource as List<RelacionComponentePersonaExcel>)
+                    ExcelHelper.ActualizarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }           
         }
+
+        //private void GuardarDatosModificados_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (RelacionListView.ItemsSource == null)
+        //            return;
+
+        //        foreach (var item in RelacionListView.ItemsSource as List<RelacionComponentePersonaExcel>)
+        //            ExcelHelper.ActualizarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        throw;
+        //    }
+        //}
 
         #endregion
 
