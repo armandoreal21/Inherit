@@ -1,5 +1,6 @@
 ﻿using GTIC.Sincronizador.Helpers;
 using Inherit.Entities;
+using Microsoft.Extensions.Primitives;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,11 @@ namespace Inherit
     {
         public string RutaFicheroComponentes { get; set; } = "Assets\\Componentes.xlsx";
         public string RutaFicheroPersonas { get; set; } = "Assets\\Personas.xlsx";
+        public string RutaFicheroRelacion { get; set; } = "Assets\\RelacionComponentePersona.xlsx";
 
         public List<PersonaExcel> DatosCargaExcelPersonas { get; set; } = new List<PersonaExcel>();
         public List<ComponenteExcel> DatosCargaExcelComponente { get; set; } = new List<ComponenteExcel>();
+        public List<RelacionComponentePersonaExcel> DatosCargaExcelRelacion { get; set; } = new List<RelacionComponentePersonaExcel>();
 
         public int MaximoPalabrasRevisadas { get; set; } = 2;
         public List<int> PalabrasYaRevisadas { get; set; } = new List<int>();
@@ -47,6 +50,16 @@ namespace Inherit
             {
                 DatosCargaExcelPersonas = ExcelHelper.GetListFromExcel<PersonaExcel>(RutaFicheroPersonas, true);
                 DatosCargaExcelComponente = ExcelHelper.GetListFromExcel<ComponenteExcel>(RutaFicheroComponentes, true);
+                DatosCargaExcelRelacion = ExcelHelper.GetListFromExcel<RelacionComponentePersonaExcel>(RutaFicheroRelacion, true);
+
+                foreach (var item in DatosCargaExcelRelacion)
+                {
+                    var nombreComponente = DatosCargaExcelComponente.FirstOrDefault(s => s.ID == item.IDCOMPONENTE);
+                    item.NombreComponente = nombreComponente != null ? nombreComponente.Tipo : string.Empty;
+
+                    var nombrePersona = DatosCargaExcelPersonas.FirstOrDefault(s => s.ID == item.IDPERSONA);
+                    item.NombrePersona = nombrePersona != null ? nombrePersona.NombreCompleto : string.Empty;
+                }
 
                 txtCountTotal.Text = DatosCargaExcelComponente.Where(a=> a.Cantidad != null).Sum(s => s.Cantidad)?.ToString() + " €";
             }
@@ -67,6 +80,7 @@ namespace Inherit
             //rbPersonas.Checked = true;
             grdPersonas.Visibility = Visibility.Visible;
             grdComponentes.Visibility = Visibility.Collapsed;
+            grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
 
             //btnSiguientePersonas.Click += btnSiguiente_Click;
             //btnSiguienteAprendidos_Click(null, null);
@@ -78,6 +92,9 @@ namespace Inherit
 
             if (selectedTabComponentes != null)
                 selectedTabComponentes.Background = Brushes.Transparent;
+
+            if (selectedTabRelacion != null)
+                selectedTabRelacion.Background = Brushes.Transparent;
 
             ActualizarDatosDelExcel();
 
@@ -96,6 +113,7 @@ namespace Inherit
 
             grdComponentes.Visibility = Visibility.Visible;
             grdPersonas.Visibility = Visibility.Collapsed;
+            grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
 
             //btnSiguienteComponentes_Click(null, null);
 
@@ -107,10 +125,44 @@ namespace Inherit
             if (selectedTabPersonas != null)
                 selectedTabPersonas.Background = Brushes.Transparent;
 
+            if (selectedTabRelacion != null)
+                selectedTabRelacion.Background = Brushes.Transparent;
+
             ActualizarDatosDelExcel();
 
             ComponentesListView.ItemsSource = null;
             ComponentesListView.ItemsSource = DatosCargaExcelComponente;
+        }
+
+        TextBlock selectedTabRelacion = new TextBlock();
+        private void rbRelacionComponentePersona_Checked(object sender, RoutedEventArgs e)
+        {
+            var seccion = "Relación";
+            if (SeccionActual == seccion) return;
+
+            SeccionActual = seccion;
+
+            grdRelacionComponentePersona.Visibility = Visibility.Visible;
+            grdComponentes.Visibility = Visibility.Collapsed;
+            grdPersonas.Visibility = Visibility.Collapsed;
+
+            //btnSiguienteComponentes_Click(null, null);
+
+            //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
+
+            selectedTabRelacion = (TextBlock)sender;
+            selectedTabRelacion.Background = Brushes.LightGray;
+
+            if (selectedTabPersonas != null)
+                selectedTabPersonas.Background = Brushes.Transparent;
+
+            if (selectedTabComponentes != null)
+                selectedTabComponentes.Background = Brushes.Transparent;
+
+            ActualizarDatosDelExcel();
+
+            RelacionListView.ItemsSource = null;
+            RelacionListView.ItemsSource = DatosCargaExcelRelacion;
         }
 
         #region Personas
@@ -253,6 +305,46 @@ namespace Inherit
                 throw ex;
             }
         }
+
+        #endregion
+
+
+
+        #region Relación
+
+        private void CantidadTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // Obtener el objeto completo al que pertenece el TextBox
+            var textBox = sender as TextBox;
+            var item = textBox?.DataContext; // El objeto completo asociado al elemento de ListView
+
+            // Aquí puedes hacer lo que necesites con el objeto completo, por ejemplo, guardar los cambios.
+            // item representa el objeto completo asociado al elemento de ListView que se está editando.
+        }
+
+        private void PorcentajeTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // Obtener el objeto completo al que pertenece el TextBox
+            var textBox = sender as TextBox;
+            var item = textBox?.DataContext; // El objeto completo asociado al elemento de ListView
+
+            // Aquí puedes hacer lo que necesites con el objeto completo, por ejemplo, guardar los cambios.
+            // item representa el objeto completo asociado al elemento de ListView que se está editando.
+        }
+
+        //private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        //{
+        //    var textBox = sender as TextBox;
+        //    if (textBox != null)
+        //    {
+        //        // Si el texto contiene una ",", la reemplaza con un "."
+        //        if (e.Text == ",")
+        //        {
+        //            e.Handled = true; // Marca el evento como manejado para evitar que se ingrese la ","
+        //            textBox.SelectedText = "."; // Reemplaza la "," con un "."
+        //        }
+        //    }
+        //}
 
         #endregion
     }
