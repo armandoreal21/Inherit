@@ -448,8 +448,14 @@ namespace Inherit
                 if (RelacionListView.ItemsSource == null)
                     return;
 
-                foreach (var item in RelacionListView.ItemsSource as List<RelacionComponentePersonaExcel>)
-                    ExcelHelper.ActualizarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item);
+                var itemsSource = RelacionListView.ItemsSource;
+                if (itemsSource is IEnumerable<RelacionComponentePersonaExcel> enumerable)
+                {
+                    foreach (var item in enumerable)
+                        ExcelHelper.ActualizarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item);
+
+                    MessageBox.Show("Guardado con éxito");
+                }
 
             }
             catch (Exception ex)

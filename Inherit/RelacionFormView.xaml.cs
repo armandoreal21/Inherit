@@ -54,7 +54,7 @@ namespace Inherit
         private int ObtenerIdNuevo()
         {
             var ultimoId = MainWindow.DatosCargaExcelRelacion.OrderByDescending(x => x.ID).FirstOrDefault();
-            var RelacionId = ultimoId != null ? ultimoId.ID + 1 : 0;
+            var RelacionId = ultimoId != null ? ultimoId.ID + 1 : 1;
 
             return RelacionId;
         }
@@ -125,7 +125,7 @@ namespace Inherit
 
                 this.Close();
 
-                MessageBox.Show("Guardado con éxito");
+                //MessageBox.Show("Guardado con éxito");
             }
             catch (Exception ex)
             {

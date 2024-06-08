@@ -60,8 +60,9 @@ namespace Inherit.Entities
 
         public ComponenteExcel SelectedComponente { get; set; } // Puedes enlazar esta propiedad también desde la vista
 
-
+        [NoCopiar]
         public string? NombreComponente { get; set; }
+        [NoCopiar]
         public string? NombrePersona { get; set; }
     }
 }

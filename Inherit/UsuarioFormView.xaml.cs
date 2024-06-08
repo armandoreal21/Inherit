@@ -34,7 +34,7 @@ namespace Inherit
         private string ObtenerIdNuevo()
         {
             var ultimoId = MainWindow.DatosCargaExcelPersonas.OrderByDescending(x => x.ID).FirstOrDefault();
-            var personaId = ultimoId != null ? ultimoId.ID + 1 : 0;
+            var personaId = ultimoId != null ? ultimoId.ID + 1 : 1;
 
             return personaId.ToString();
         }
@@ -71,7 +71,7 @@ namespace Inherit
 
                 this.Close();
 
-                MessageBox.Show("Guardado con éxito");
+                //MessageBox.Show("Guardado con éxito");
             }
             catch (Exception ex)
             {
