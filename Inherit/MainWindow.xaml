@@ -270,7 +270,8 @@
                         </StackPanel>
 
 
-                        <Label x:Name="lbCantidadComponente" FontSize="14" FontWeight="SemiBold" Margin="10 0 0 0" >Componente</Label>
+                        <Label x:Name="lbCantidadComponente" FontSize="14" FontWeight="SemiBold" Margin="10 0 0 0" ></Label>
+                        <Label x:Name="lbPorcentajeComponente" FontSize="14" FontWeight="SemiBold" Margin="10 0 0 0" ></Label>
 
                     </StackPanel>
 

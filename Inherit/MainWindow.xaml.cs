@@ -291,6 +291,12 @@ namespace Inherit
                     if (dataContext != null)
                     {
                         var id = dataContext.ID;
+
+                        //Eliminar la relacion con RelacionComponentePersona
+                        var listaRelacionEliminar = DatosCargaExcelRelacion.Where(s => s.IDPERSONA == id);
+                        foreach (var item in listaRelacionEliminar)
+                            ExcelHelper.EliminarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item.ID);
+
                         ExcelHelper.EliminarEntidad<PersonaExcel>(RutaFicheroPersonas, id);
 
                         ActualizarDatosDelExcel();
@@ -363,6 +369,12 @@ namespace Inherit
                     if (dataContext != null)
                     {
                         var id = dataContext.ID;
+
+                        //Eliminar la relacion con RelacionComponentePersona
+                        var listaRelacionEliminar = DatosCargaExcelRelacion.Where(s => s.IDCOMPONENTE == id);
+                        foreach (var item in listaRelacionEliminar)                        
+                            ExcelHelper.EliminarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item.ID);                        
+
                         ExcelHelper.EliminarEntidad<ComponenteExcel>(RutaFicheroComponentes, id);
 
                         ActualizarDatosDelExcel();
@@ -386,46 +398,98 @@ namespace Inherit
 
         private void CantidadTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            var textBox = sender as TextBox;
-            var item = textBox?.DataContext as RelacionComponentePersonaExcel;
-
-            if (item != null && item.Cantidad != null)
+            try
             {
-                var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+                var textBox = sender as TextBox;
+                var item = textBox?.DataContext as RelacionComponentePersonaExcel;
 
-                if (selectedItem != null)                
-                    item.Porcentaje = item.Cantidad * 100 / selectedItem.Cantidad;
+                if (item != null && item.Cantidad != null)
+                {
+                    var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+
+                    if (selectedItem != null)
+                    {
+                        item.Porcentaje = item.Cantidad * 100 / selectedItem.Cantidad;
+                        ActualizarDatosComponenteEnRelacionComponentePersona();
+                    }
+
+                }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void PorcentajeTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            var textBox = sender as TextBox;
-            var item = textBox?.DataContext as RelacionComponentePersonaExcel;
-
-            if (item != null && item.Porcentaje != null)
+            try
             {
-                var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+                var textBox = sender as TextBox;
+                var item = textBox?.DataContext as RelacionComponentePersonaExcel;
 
-                if (selectedItem != null)
-                    item.Cantidad = (item.Porcentaje /100) * selectedItem.Cantidad;
+                if (item != null && item.Porcentaje != null)
+                {
+                    var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+
+                    if (selectedItem != null)
+                    {
+                        item.Cantidad = (item.Porcentaje / 100) * selectedItem.Cantidad;
+                        ActualizarDatosComponenteEnRelacionComponentePersona();
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }           
         }
 
 
         public void cbComponente_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
-
-            if (selectedItem != null) 
+            try
             {
-                SelectIndexComponenteCB = cbComponente.SelectedIndex;
-                ActualizarDatosRelacionDelExcel(); //TODO: Se podría mantener los datos que vas modificando (en el listado de Relación) eliminando esta linea.
-                lbCantidadComponente.Content = selectedItem.Cantidad + " €";
-                RelacionListView.ItemsSource = null;
-                RelacionListView.ItemsSource = DatosCargaExcelRelacion.Where(s=>s.IDCOMPONENTE == selectedItem.ID);
+                var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+
+                if (selectedItem != null)
+                {
+                    SelectIndexComponenteCB = cbComponente.SelectedIndex;
+                    ActualizarDatosRelacionDelExcel(); //TODO: Se podría mantener los datos que vas modificando (en el listado de Relación) eliminando esta linea.
+                                                       //lbCantidadComponente.Content = selectedItem.Cantidad + " €";
+                   
+                    RelacionListView.ItemsSource = null;
+                    RelacionListView.ItemsSource = DatosCargaExcelRelacion.Where(s => s.IDCOMPONENTE == selectedItem.ID);
+
+                    ActualizarDatosComponenteEnRelacionComponentePersona();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+        }
+
+        public void ActualizarDatosComponenteEnRelacionComponentePersona()
+        {         
+            var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+            if (selectedItem == null) return; 
+
+            double cantidadActual = 0;
+            double porcentajeActual = 0;
+
+            var itemsSource = RelacionListView.ItemsSource;
+            if (itemsSource is IEnumerable<RelacionComponentePersonaExcel> enumerable)
+            {
+                var personas = enumerable.Where(s => s.IDCOMPONENTE == selectedItem.ID);
+
+                cantidadActual = personas.Where(d=>d.Cantidad != null).Sum(s => (double)s.Cantidad);
+                porcentajeActual = personas.Where(d => d.Porcentaje != null).Sum(s => (double)s.Porcentaje);
+            }
+
+            lbCantidadComponente.Content = cantidadActual.ToString("0.##") + "/" +selectedItem.Cantidad + " €";
+            lbPorcentajeComponente.Content = porcentajeActual.ToString("0.##") + "/100 %";
         }
 
         private void CrearRelacion_Click(object sender, RoutedEventArgs e)
