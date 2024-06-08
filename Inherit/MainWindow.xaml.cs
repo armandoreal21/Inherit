@@ -37,6 +37,8 @@ namespace Inherit
         public List<ComponenteExcel> DatosCargaExcelComponente { get; set; } = new List<ComponenteExcel>();
         public List<RelacionComponentePersonaExcel> DatosCargaExcelRelacion { get; set; } = new List<RelacionComponentePersonaExcel>();
 
+        public int SelectIndexComponenteCB { get; set; } = 0;
+
         private ComponenteExcel _selectedComponente;
 
         public ObservableCollection<RelacionComponentePersonaExcel> RelacionList { get; set; }
@@ -226,7 +228,7 @@ namespace Inherit
                 cbComponente.DisplayMemberPath = "Tipo";
 
                 if (cbComponente.SelectedItem == null )
-                    cbComponente.SelectedIndex = 0;
+                    cbComponente.SelectedIndex = SelectIndexComponenteCB;
             }
 
             cbComponente_SelectionChanged(null, null);
@@ -418,7 +420,8 @@ namespace Inherit
 
             if (selectedItem != null) 
             {
-                ActualizarDatosRelacionDelExcel(); //TODO: sSe podría mantener los datos que vas modificando (en el listado de Relación) eliminando esta linea.
+                SelectIndexComponenteCB = cbComponente.SelectedIndex;
+                ActualizarDatosRelacionDelExcel(); //TODO: Se podría mantener los datos que vas modificando (en el listado de Relación) eliminando esta linea.
                 lbCantidadComponente.Content = selectedItem.Cantidad + " €";
                 RelacionListView.ItemsSource = null;
                 RelacionListView.ItemsSource = DatosCargaExcelRelacion.Where(s=>s.IDCOMPONENTE == selectedItem.ID);
