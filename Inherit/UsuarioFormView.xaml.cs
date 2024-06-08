@@ -28,7 +28,7 @@ namespace Inherit
             tbID.Text = persona.ID != null && persona.ID > 0 ? persona.ID.ToString() : ObtenerIdNuevo() ;
             tbNombre.Text = persona.NombreCompleto;
 
-           
+            tbNombre.Focus();
         }
 
         private string ObtenerIdNuevo()

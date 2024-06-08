@@ -29,7 +29,8 @@ namespace Inherit
             tbNombre.Text = Componente.Tipo;
             tbCantidad.Text = Componente.Cantidad != null ? Componente.Cantidad.ToString() : "0";
 
-           
+            tbNombre.Focus();
+
         }
 
         private string ObtenerIdNuevo()

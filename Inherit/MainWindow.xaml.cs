@@ -102,6 +102,9 @@ namespace Inherit
                 }
 
                 txtCountTotal.Text = DatosCargaExcelComponente.Where(a=> a.Cantidad != null).Sum(s => s.Cantidad)?.ToString() + " €";
+
+                var totalAsignado = DatosCargaExcelRelacion.Where(a => a.Cantidad != null).Sum(s => s.Cantidad);
+                txtCountTotalAsignado.Text = (totalAsignado != null ? ((double)totalAsignado).ToString("0.##") : "0") + " €";
             }
             catch (Exception ex)
             {
@@ -587,6 +590,41 @@ namespace Inherit
             }
         }
 
+        private void RepartirFormaEquitativa_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (RelacionListView.ItemsSource == null)
+                    return;
+                               
+                var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+                if (selectedItem == null) return;
+
+                var itemsSource = RelacionListView.ItemsSource;
+                if (itemsSource is IEnumerable<RelacionComponentePersonaExcel> enumerable)
+                {
+                    //var personas = enumerable.Where(s => s.IDCOMPONENTE == selectedItem.ID);
+
+                    var porcentajeRepartir = 100 / enumerable.Count();
+
+                    if (porcentajeRepartir <= 0) return;
+
+                    foreach ( var item in enumerable)
+                    {
+                        item.Porcentaje = porcentajeRepartir;
+                        item.Cantidad = (item.Porcentaje / 100) * selectedItem.Cantidad;
+                        ActualizarDatosComponenteEnRelacionComponentePersona();
+                    }
+                                           
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw ex;
+
+            }
+        }
 
         private void GuardarDatosModificados_Click(object sender, RoutedEventArgs e)
         {

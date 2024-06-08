@@ -27,13 +27,13 @@
 
         <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0">
             <TextBlock Text="Total: " FontSize="12" HorizontalAlignment="Center" />
-            <TextBlock Text="0 de 0" Name="txtCountTotal" FontSize="12" HorizontalAlignment="Center" />
+            <TextBlock Text="0" Name="txtCountTotal" FontSize="12" HorizontalAlignment="Center" />
         </StackPanel>
 
-        <!--<StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
-            <TextBlock Text="Total: " FontSize="10" HorizontalAlignment="Center" />
-            <TextBlock Text="0 de 0" Name="txtCountTotalRevisadas" FontSize="10" HorizontalAlignment="Center" />
-        </StackPanel>-->
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+            <TextBlock Text="Asignado: " FontSize="10" HorizontalAlignment="Center" />
+            <TextBlock Text="0" Name="txtCountTotalAsignado" FontSize="12" HorizontalAlignment="Center" />
+        </StackPanel>
 
         <Grid Name="grdPersonas" Visibility="Collapsed" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -275,6 +275,7 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" >
+                        <Button Style="{DynamicResource AppGrayButton}" Content="Repartir %" Width="110" Click="RepartirFormaEquitativa_Click"/>
                         <Button Style="{DynamicResource AppGrayButton}" Content="Modificar Usuarios" Width="110" Click="CrearRelacion_Click"/>
                     </StackPanel>
 
