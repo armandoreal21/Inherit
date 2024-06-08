@@ -21,6 +21,7 @@
                 <TextBlock Text="Personas" Margin="5" Style="{StaticResource TabHeaderStyle}" MouseLeftButtonUp="rbPersonas_Checked"/>
                 <TextBlock Text="Componentes" Margin="5" Style="{StaticResource TabHeaderStyle}" MouseLeftButtonUp="rbComponentes_Checked"/>
                 <TextBlock Text="Relación" Margin="5" Style="{StaticResource TabHeaderStyle}" MouseLeftButtonUp="rbRelacionComponentePersona_Checked"/>
+                <TextBlock Text="Resumen" Margin="5" Style="{StaticResource TabHeaderStyle}" MouseLeftButtonUp="rbResumen_Checked"/>
             </StackPanel>
         </Grid>
 
@@ -130,9 +131,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
-
-
-
+                
                 </Grid>
             </StackPanel>
         </Grid>
@@ -354,6 +353,142 @@
             </StackPanel>
 
             
+        </Grid>
+
+        <Grid Name="grdResumen" Visibility="Collapsed" Grid.Row="1">
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>-->
+
+            <!--<StackPanel Margin="20 0 20 0">
+                <Grid x:Name="ContenidoResumen">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>-->
+
+                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" >
+                        <Button Style="{DynamicResource AppGrayButton}" Content="Modificar Usuarios" Width="110" Click="CrearRelacion_Click"/>
+                    </StackPanel>-->
+
+                    <!--<Grid Grid.Row="2">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TableTextBlock}"/>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Background="{StaticResource Gray}">
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*"/>
+                                    --><!--<ColumnDefinition Width="15*"/>--><!--
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="9*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="28"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Id" Background="{StaticResource Gray}"/>
+                                <Border Grid.Column="0" BorderThickness="0,0,1,0" BorderBrush="White"/>
+
+                                --><!--<TextBlock Grid.Column="1" Text="Componente" Background="{StaticResource Gray}"/>
+                                <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="White"/>--><!--
+
+                                <TextBlock Grid.Column="1" Text="Nombre" Background="{StaticResource Gray}"/>
+                                <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="White"/>
+
+                                <TextBlock Grid.Column="2" Text="Cantidad (€)" Background="{StaticResource Gray}"/>
+                                <Border Grid.Column="2" BorderThickness="0,0,1,0" BorderBrush="White"/>
+
+                                <TextBlock Grid.Column="3" Text="Porcentaje (%)" Background="{StaticResource Gray}"/>
+                                <Border Grid.Column="3" BorderThickness="0,0,1,0" BorderBrush="White"/>
+                            </Grid>
+                        </StackPanel>
+                        <ListView x:Name="ResumenListView"  ItemsSource="{Binding ResumenList}" Grid.Row="1" Background="Transparent" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="8*"/>
+                                            --><!--<ColumnDefinition Width="15*"/>--><!--
+                                            <ColumnDefinition Width="15*"/>
+                                            <ColumnDefinition Width="8*"/>
+                                            <ColumnDefinition Width="9*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition MinHeight="30" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Column="0" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ID}"/>
+                                        --><!--<TextBlock Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding NombreComponente}"/>--><!--
+                                        <TextBlock Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding NombrePersona}"/>
+                                        --><!--PreviewTextInput="TextBox_PreviewTextInput"--><!--
+                                        <TextBlock Grid.Column="2" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Cantidad}"/>
+                                        <TextBlock Grid.Column="3" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Porcentaje}"/>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>-->
+
+
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ListBox x:Name="ListBoxItems">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="5" Padding="5">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Entidad.Nombre}" Value="Componente">
+                                                        <Setter Property="Background" Value="LightGray"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Entidad.Nombre}" Value="Persona">
+                                                        <Setter Property="Background" Value="White"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <StackPanel Orientation="Horizontal">
+                                            <!--<TextBlock Text="{Binding Entidad.Nombre}" FontWeight="Bold" Margin="5" />
+                                            <TextBlock Text=" - " Margin="5" />-->
+                                            <TextBlock Text="{Binding Nombre}" FontWeight="Bold" Margin="5" />      
+                                            <TextBlock Text=" - " Margin="5" />
+                                            <TextBlock Text="{Binding Cantidad}" Margin="5" />
+                                            <TextBlock Text=" - " Margin="5" />
+                                            <TextBlock Text="{Binding Porcentaje}" Margin="5" />
+                                            <!--<TextBlock Text=" - " Margin="5" />
+                                            <TextBlock Text="{Binding Total}" Margin="5" />-->
+                                </StackPanel>
+                                        
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+
+
+                <!--</Grid>
+            </StackPanel>-->
+
+            <!--<StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">
+                --><!--<Button Name="HiddenButton" Visibility="Collapsed" Focusable="True"/>--><!--
+                <Button Style="{StaticResource MyButton}" Margin="2" IsEnabled="True" Click="EliminarTodo_Click">EliminarTodo</Button>
+            </StackPanel>-->
+
+
         </Grid>
 
 

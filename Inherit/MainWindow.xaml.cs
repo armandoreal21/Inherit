@@ -142,6 +142,7 @@ namespace Inherit
             grdPersonas.Visibility = Visibility.Visible;
             grdComponentes.Visibility = Visibility.Collapsed;
             grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
+            grdResumen.Visibility = Visibility.Collapsed;
 
             //btnSiguientePersonas.Click += btnSiguiente_Click;
             //btnSiguienteAprendidos_Click(null, null);
@@ -156,6 +157,9 @@ namespace Inherit
 
             if (selectedTabRelacion != null)
                 selectedTabRelacion.Background = Brushes.Transparent;
+
+            if (selectedTabResumen != null)
+                selectedTabResumen.Background = Brushes.Transparent;
 
             ActualizarDatosDelExcel();
 
@@ -175,6 +179,7 @@ namespace Inherit
             grdComponentes.Visibility = Visibility.Visible;
             grdPersonas.Visibility = Visibility.Collapsed;
             grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
+            grdResumen.Visibility = Visibility.Collapsed;
 
             //btnSiguienteComponentes_Click(null, null);
 
@@ -188,6 +193,9 @@ namespace Inherit
 
             if (selectedTabRelacion != null)
                 selectedTabRelacion.Background = Brushes.Transparent;
+
+            if (selectedTabResumen != null)
+                selectedTabResumen.Background = Brushes.Transparent;
 
             ActualizarDatosDelExcel();
 
@@ -206,6 +214,7 @@ namespace Inherit
             grdRelacionComponentePersona.Visibility = Visibility.Visible;
             grdComponentes.Visibility = Visibility.Collapsed;
             grdPersonas.Visibility = Visibility.Collapsed;
+            grdResumen.Visibility = Visibility.Collapsed;
 
             //btnSiguienteComponentes_Click(null, null);
 
@@ -220,6 +229,9 @@ namespace Inherit
             if (selectedTabComponentes != null)
                 selectedTabComponentes.Background = Brushes.Transparent;
 
+            if (selectedTabResumen != null)
+                selectedTabResumen.Background = Brushes.Transparent;
+
             ActualizarDatosDelExcel();
 
             if (DatosCargaExcelComponente != null && DatosCargaExcelComponente.Count > 0)
@@ -233,6 +245,74 @@ namespace Inherit
 
             cbComponente_SelectionChanged(null, null);
             //Seleccion
+        }
+
+        TextBlock selectedTabResumen = new TextBlock();
+        private void rbResumen_Checked(object sender, RoutedEventArgs e)
+        {
+            var seccion = "Resumen";
+            if (SeccionActual == seccion) return;
+
+            SeccionActual = seccion;
+
+            grdResumen.Visibility = Visibility.Visible;
+            grdComponentes.Visibility = Visibility.Collapsed;
+            grdPersonas.Visibility = Visibility.Collapsed;
+            grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
+
+            //btnSiguienteComponentes_Click(null, null);
+
+            //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
+
+            selectedTabResumen = (TextBlock)sender;
+            selectedTabResumen.Background = Brushes.LightGray;
+
+            if (selectedTabPersonas != null)
+                selectedTabPersonas.Background = Brushes.Transparent;
+
+            if (selectedTabComponentes != null)
+                selectedTabComponentes.Background = Brushes.Transparent;
+
+            if (selectedTabRelacion != null)
+                selectedTabRelacion.Background = Brushes.Transparent;
+
+            ActualizarDatosDelExcel();
+
+            //ResumenListView.ItemsSource = null;
+            //ResumenListView.ItemsSource = DatosCargaExcelRelacion;
+
+            if (DatosCargaExcelRelacion == null) return;
+
+            var items = new List<Item>();
+            var entidad1 = new Entidad { Nombre = "Componente" };
+            var entidad2 = new Entidad { Nombre = "Persona" };
+
+            foreach (var itemComponente in DatosCargaExcelComponente.OrderBy(s=>s.Tipo))
+            {
+                var sumaPorcentaje = DatosCargaExcelRelacion.Where(a=>a.IDCOMPONENTE == itemComponente.ID && a.Porcentaje != null).Sum(s => s.Porcentaje);
+                var sumaCantidad = DatosCargaExcelRelacion.Where(a=>a.IDCOMPONENTE == itemComponente.ID && a.Cantidad != null).Sum(s => s.Cantidad);
+                items.Add(new Item { 
+                    Nombre = itemComponente.Tipo, 
+                    Cantidad = (sumaCantidad != null ? ((double)sumaCantidad).ToString("0.##") + "/" : "0/") + (itemComponente.Cantidad != null ? ((double)itemComponente.Cantidad).ToString("0.##") + "€" : "0 €"),
+                    //Total = sumaCantidad != null ? ((double)sumaCantidad).ToString("0.##") + "/" : "0/" + itemComponente.Cantidad != null ? ((double)itemComponente.Cantidad).ToString("0.##") + "€" : "0 €",
+                    Porcentaje = sumaPorcentaje!= null? ((double)sumaPorcentaje).ToString("0.##") + "%" : "0 %", 
+                    Entidad = entidad1 });
+
+                foreach (var itemPersona in DatosCargaExcelRelacion.Where(a => a.IDCOMPONENTE == itemComponente.ID).OrderBy(s=>s.NombrePersona))
+                {
+                    items.Add(new Item
+                    {
+                        Nombre = itemPersona.NombrePersona,
+                        Cantidad = itemPersona.Cantidad != null ? ((double)itemPersona.Cantidad).ToString("0.##") + "€" : "0 €",
+                        Total = "",
+                        Porcentaje = itemPersona.Porcentaje != null ? ((double)itemPersona.Porcentaje).ToString("0.##") + "%" : "0 %",
+                        Entidad = entidad2
+                    });
+                }
+            }
+
+            ListBoxItems.ItemsSource = items;
+
         }
 
         #region Personas
@@ -532,24 +612,35 @@ namespace Inherit
             }           
         }
 
-        //private void GuardarDatosModificados_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (RelacionListView.ItemsSource == null)
-        //            return;
 
-        //        foreach (var item in RelacionListView.ItemsSource as List<RelacionComponentePersonaExcel>)
-        //            ExcelHelper.ActualizarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item);
+        #endregion
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //        throw;
-        //    }
-        //}
 
+        #region Resumen
+        private void EliminarTodo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //if (RelacionListView.ItemsSource == null)
+                //    return;
+
+                //var itemsSource = RelacionListView.ItemsSource;
+                //if (itemsSource is IEnumerable<RelacionComponentePersonaExcel> enumerable)
+                //{
+                //    foreach (var item in enumerable)
+                //        ExcelHelper.ActualizarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item);
+
+                //    MessageBox.Show("Guardado con éxito");
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+
+        }
         #endregion
 
         //private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
