@@ -46,10 +46,10 @@ C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.Gen
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.AssemblyInfoInputs.cache
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.AssemblyInfo.cs
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.sourcelink.json
+C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.csproj.Up2Date
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.dll
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\refint\Inherit.dll
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.pdb
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.genruntimeconfig.cache
 C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\ref\Inherit.dll
-C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.sourcelink.json
-C:\Users\admin\source\repos\Inherit\Inherit\obj\Debug\net6.0-windows\Inherit.csproj.Up2Date

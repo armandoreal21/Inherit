@@ -146,6 +146,7 @@ namespace Inherit
             grdComponentes.Visibility = Visibility.Collapsed;
             grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
             grdResumen.Visibility = Visibility.Collapsed;
+            grdConfiguracion.Visibility = Visibility.Collapsed;
 
             //btnSiguientePersonas.Click += btnSiguiente_Click;
             //btnSiguienteAprendidos_Click(null, null);
@@ -163,6 +164,9 @@ namespace Inherit
 
             if (selectedTabResumen != null)
                 selectedTabResumen.Background = Brushes.Transparent;
+
+            if (selectedTabConfiguracion != null)
+                selectedTabConfiguracion.Background = Brushes.Transparent;
 
             ActualizarDatosDelExcel();
 
@@ -183,6 +187,7 @@ namespace Inherit
             grdPersonas.Visibility = Visibility.Collapsed;
             grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
             grdResumen.Visibility = Visibility.Collapsed;
+            grdConfiguracion.Visibility = Visibility.Collapsed;
 
             //btnSiguienteComponentes_Click(null, null);
 
@@ -199,6 +204,9 @@ namespace Inherit
 
             if (selectedTabResumen != null)
                 selectedTabResumen.Background = Brushes.Transparent;
+
+            if (selectedTabConfiguracion != null)
+                selectedTabConfiguracion.Background = Brushes.Transparent;
 
             ActualizarDatosDelExcel();
 
@@ -218,6 +226,7 @@ namespace Inherit
             grdComponentes.Visibility = Visibility.Collapsed;
             grdPersonas.Visibility = Visibility.Collapsed;
             grdResumen.Visibility = Visibility.Collapsed;
+            grdConfiguracion.Visibility = Visibility.Collapsed;
 
             //btnSiguienteComponentes_Click(null, null);
 
@@ -234,6 +243,9 @@ namespace Inherit
 
             if (selectedTabResumen != null)
                 selectedTabResumen.Background = Brushes.Transparent;
+
+            if (selectedTabConfiguracion != null)
+                selectedTabConfiguracion.Background = Brushes.Transparent;
 
             ActualizarDatosDelExcel();
 
@@ -262,6 +274,7 @@ namespace Inherit
             grdComponentes.Visibility = Visibility.Collapsed;
             grdPersonas.Visibility = Visibility.Collapsed;
             grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
+            grdConfiguracion.Visibility = Visibility.Collapsed;
 
             //btnSiguienteComponentes_Click(null, null);
 
@@ -278,6 +291,9 @@ namespace Inherit
 
             if (selectedTabRelacion != null)
                 selectedTabRelacion.Background = Brushes.Transparent;
+
+            if (selectedTabConfiguracion != null)
+                selectedTabConfiguracion.Background = Brushes.Transparent;
 
             ActualizarDatosDelExcel();
 
@@ -315,6 +331,46 @@ namespace Inherit
             }
 
             ListBoxItems.ItemsSource = items;
+
+        }
+
+        TextBlock selectedTabConfiguracion = new TextBlock();
+        private void rbConfiguracion_Checked(object sender, RoutedEventArgs e)
+        {
+            var seccion = "Configuracion";
+            if (SeccionActual == seccion) return;
+
+            SeccionActual = seccion;
+
+            grdConfiguracion.Visibility = Visibility.Visible;
+            grdComponentes.Visibility = Visibility.Collapsed;
+            grdPersonas.Visibility = Visibility.Collapsed;
+            grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
+            grdResumen.Visibility = Visibility.Collapsed;
+
+            //btnSiguienteComponentes_Click(null, null);
+
+            //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
+
+            selectedTabConfiguracion = (TextBlock)sender;
+            selectedTabConfiguracion.Background = Brushes.LightGray;
+
+            if (selectedTabPersonas != null)
+                selectedTabPersonas.Background = Brushes.Transparent;
+
+            if (selectedTabComponentes != null)
+                selectedTabComponentes.Background = Brushes.Transparent;
+
+            if (selectedTabRelacion != null)
+                selectedTabRelacion.Background = Brushes.Transparent;
+
+            if (selectedTabResumen != null)
+                selectedTabResumen.Background = Brushes.Transparent;
+
+            ActualizarDatosDelExcel();
+
+            //ResumenListView.ItemsSource = null;
+            //ResumenListView.ItemsSource = DatosCargaExcelRelacion;
 
         }
 
@@ -654,22 +710,51 @@ namespace Inherit
         #endregion
 
 
-        #region Resumen
+        #region Configuracion
         private void EliminarTodo_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                //if (RelacionListView.ItemsSource == null)
-                //    return;
+                MessageBoxResult result = MessageBox.Show("¿Está seguro que desea eliminar todos los datos?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-                //var itemsSource = RelacionListView.ItemsSource;
-                //if (itemsSource is IEnumerable<RelacionComponentePersonaExcel> enumerable)
-                //{
-                //    foreach (var item in enumerable)
-                //        ExcelHelper.ActualizarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item);
+                if (result == MessageBoxResult.No)
+                    return;
 
-                //    MessageBox.Show("Guardado con éxito");
-                //}
+                foreach (var item in DatosCargaExcelRelacion)
+                    ExcelHelper.EliminarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item.ID);
+
+                foreach (var item in DatosCargaExcelComponente)
+                    ExcelHelper.EliminarEntidad<ComponenteExcel>(RutaFicheroComponentes, item.ID);
+
+                foreach (var item in DatosCargaExcelPersonas)
+                    ExcelHelper.EliminarEntidad<PersonaExcel>(RutaFicheroPersonas, item.ID);
+
+                ActualizarDatosDelExcel();
+
+                if (DatosCargaExcelComponente != null && DatosCargaExcelComponente.Count > 0)
+                {
+                    cbComponente.ItemsSource = DatosCargaExcelComponente;
+                    cbComponente.DisplayMemberPath = "Tipo";
+
+                    if (cbComponente.SelectedItem == null)
+                        cbComponente.SelectedIndex = SelectIndexComponenteCB;
+                }
+                else
+                {
+                    cbComponente.ItemsSource = DatosCargaExcelComponente;
+                    cbComponente.DisplayMemberPath = "Tipo";
+
+                    if (cbComponente.SelectedItem == null)
+                        cbComponente.SelectedIndex = SelectIndexComponenteCB;
+                }
+
+                ListBoxItems.ItemsSource = null;
+                RelacionListView.ItemsSource = null;
+                lbCantidadComponente.Content = "";
+                lbPorcentajeComponente.Content = "";
+
+                UsuariosListView.ItemsSource = null;
+                UsuariosListView.ItemsSource = DatosCargaExcelPersonas;
 
             }
             catch (Exception ex)
@@ -679,6 +764,106 @@ namespace Inherit
             }
 
         }
+        private void EliminarTodasLasPersonas_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBoxResult result = MessageBox.Show("¿Está seguro que desea eliminar todas las personas?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.No)
+                    return;
+
+                foreach (var item in DatosCargaExcelPersonas)
+                    ExcelHelper.EliminarEntidad<PersonaExcel>(RutaFicheroPersonas, item.ID);
+
+                ActualizarDatosDelExcel();
+
+                UsuariosListView.ItemsSource = null;
+                UsuariosListView.ItemsSource = DatosCargaExcelPersonas;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+
+        }
+
+        private void EliminarTodosLosComponentes_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBoxResult result = MessageBox.Show("¿Está seguro que desea eliminar todos los componentes?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.No)
+                    return;
+
+                foreach (var item in DatosCargaExcelComponente)
+                    ExcelHelper.EliminarEntidad<ComponenteExcel>(RutaFicheroComponentes, item.ID);
+
+                ActualizarDatosDelExcel();
+
+                if (DatosCargaExcelComponente != null && DatosCargaExcelComponente.Count > 0)
+                {
+                    cbComponente.ItemsSource = DatosCargaExcelComponente;
+                    cbComponente.DisplayMemberPath = "Tipo";
+
+                    if (cbComponente.SelectedItem == null)
+                        cbComponente.SelectedIndex = SelectIndexComponenteCB;
+                }
+                else
+                {
+                    cbComponente.ItemsSource = DatosCargaExcelComponente;
+                    cbComponente.DisplayMemberPath = "Tipo";
+
+                    if (cbComponente.SelectedItem == null)
+                        cbComponente.SelectedIndex = SelectIndexComponenteCB;
+                }
+
+                UsuariosListView.ItemsSource = null;
+                UsuariosListView.ItemsSource = DatosCargaExcelPersonas;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+
+        }
+
+        private void EliminarTodosLasRelaciones_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBoxResult result = MessageBox.Show("¿Está seguro que desea eliminar todas las relaciones?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.No)
+                    return;
+
+                foreach (var item in DatosCargaExcelRelacion)
+                    ExcelHelper.EliminarEntidad<RelacionComponentePersonaExcel>(RutaFicheroRelacion, item.ID);
+
+                ActualizarDatosDelExcel();
+
+                ListBoxItems.ItemsSource = null;
+                RelacionListView.ItemsSource = null;
+                lbCantidadComponente.Content = "";
+                lbPorcentajeComponente.Content = "";
+
+                UsuariosListView.ItemsSource = null;
+                UsuariosListView.ItemsSource = DatosCargaExcelPersonas;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+
+        }
+
         #endregion
 
         //private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)

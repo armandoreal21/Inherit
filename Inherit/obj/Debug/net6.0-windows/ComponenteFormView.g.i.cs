@@ -92,7 +92,7 @@ namespace Inherit {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Inherit;V1.0.0.0;component/componenteformview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Inherit;component/componenteformview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ComponenteFormView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
