@@ -1,0 +1,264 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\admin\\source\\repos\\Inherit\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\relacionformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\relacionformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\helper\\excelhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\helper\\excelhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\componenteformview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\componenteformview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\usuarioformview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\usuarioformview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\componenteformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\componenteformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\usuarioformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\usuarioformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\entities\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\entities\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\entities\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\entities\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\inherit.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\inherit.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\enums\\solicitudestado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\enums\\solicitudestado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|c:\\users\\admin\\source\\repos\\inherit\\inherit\\enum\\tipotarjetaenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A11F712-4D1C-485E-B4E8-B668F2B7A678}|Inherit\\Inherit.csproj|solutionrelative:inherit\\enum\\tipotarjetaenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Entities\\Item.cs",
+              "RelativeDocumentMoniker": "Inherit\\Entities\\Item.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Entities\\Item.cs",
+              "RelativeToolTip": "Inherit\\Entities\\Item.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T10:00:03.767Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Inherit\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Inherit\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAAAGIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T13:22:36.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ComponenteFormView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\ComponenteFormView.xaml.cs",
+              "RelativeDocumentMoniker": "Inherit\\ComponenteFormView.xaml.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\ComponenteFormView.xaml.cs",
+              "RelativeToolTip": "Inherit\\ComponenteFormView.xaml.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAAAAoAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T15:08:05.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Inherit\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\MainWindow.xaml",
+              "RelativeToolTip": "Inherit\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-07T11:57:52.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ComponenteFormView.xaml",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\ComponenteFormView.xaml",
+              "RelativeDocumentMoniker": "Inherit\\ComponenteFormView.xaml",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\ComponenteFormView.xaml",
+              "RelativeToolTip": "Inherit\\ComponenteFormView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-07T11:03:35.839Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RelacionFormView.xaml",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\RelacionFormView.xaml",
+              "RelativeDocumentMoniker": "Inherit\\RelacionFormView.xaml",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\RelacionFormView.xaml",
+              "RelativeToolTip": "Inherit\\RelacionFormView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-07T12:19:25.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ExcelHelper.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Helper\\ExcelHelper.cs",
+              "RelativeDocumentMoniker": "Inherit\\Helper\\ExcelHelper.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Helper\\ExcelHelper.cs",
+              "RelativeToolTip": "Inherit\\Helper\\ExcelHelper.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAmwC4AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T15:03:20.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UsuarioFormView.xaml",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\UsuarioFormView.xaml",
+              "RelativeDocumentMoniker": "Inherit\\UsuarioFormView.xaml",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\UsuarioFormView.xaml",
+              "RelativeToolTip": "Inherit\\UsuarioFormView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-07T10:00:15.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UsuarioFormView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\UsuarioFormView.xaml.cs",
+              "RelativeDocumentMoniker": "Inherit\\UsuarioFormView.xaml.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\UsuarioFormView.xaml.cs",
+              "RelativeToolTip": "Inherit\\UsuarioFormView.xaml.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAYwB4AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T10:05:17.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Inherit.csproj",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Inherit.csproj",
+              "RelativeDocumentMoniker": "Inherit\\Inherit.csproj",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Inherit.csproj",
+              "RelativeToolTip": "Inherit\\Inherit.csproj",
+              "ViewState": "AQIAABUAAAAAAAAAAAAQwCsAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-19T09:40:05.511Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Persona.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Entities\\Persona.cs",
+              "RelativeDocumentMoniker": "Inherit\\Entities\\Persona.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Entities\\Persona.cs",
+              "RelativeToolTip": "Inherit\\Entities\\Persona.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T15:05:51.65Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SolicitudEstado.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Enums\\SolicitudEstado.cs",
+              "RelativeDocumentMoniker": "Inherit\\Enums\\SolicitudEstado.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Enums\\SolicitudEstado.cs",
+              "RelativeToolTip": "Inherit\\Enums\\SolicitudEstado.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T07:36:43.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TipoTarjetaEnum.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Enum\\TipoTarjetaEnum.cs",
+              "RelativeDocumentMoniker": "Inherit\\Enum\\TipoTarjetaEnum.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\Inherit\\Inherit\\Enum\\TipoTarjetaEnum.cs",
+              "RelativeToolTip": "Inherit\\Enum\\TipoTarjetaEnum.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T07:36:27.865Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1498,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
