@@ -136,242 +136,277 @@ namespace Inherit
         TextBlock selectedTabPersonas = new TextBlock();
         private void rbPersonas_Checked(object sender, RoutedEventArgs e)
         {
-            var seccion = "Personas";
-            if (SeccionActual == seccion) return;
+            try
+            {
+                var seccion = "Personas";
+                if (SeccionActual == seccion) return;
 
-            SeccionActual = seccion;
+                SeccionActual = seccion;
 
-            //rbPersonas.Checked = true;
-            grdPersonas.Visibility = Visibility.Visible;
-            grdComponentes.Visibility = Visibility.Collapsed;
-            grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
-            grdResumen.Visibility = Visibility.Collapsed;
-            grdConfiguracion.Visibility = Visibility.Collapsed;
+                //rbPersonas.Checked = true;
+                grdPersonas.Visibility = Visibility.Visible;
+                grdComponentes.Visibility = Visibility.Collapsed;
+                grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
+                grdResumen.Visibility = Visibility.Collapsed;
+                grdConfiguracion.Visibility = Visibility.Collapsed;
 
-            //btnSiguientePersonas.Click += btnSiguiente_Click;
-            //btnSiguienteAprendidos_Click(null, null);
+                //btnSiguientePersonas.Click += btnSiguiente_Click;
+                //btnSiguienteAprendidos_Click(null, null);
 
-            //txtCountTotal.Text = (DatosCargaExcelAprendidos != null ? DatosCargaExcelAprendidos.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
+                //txtCountTotal.Text = (DatosCargaExcelAprendidos != null ? DatosCargaExcelAprendidos.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
 
-            selectedTabPersonas = (TextBlock)sender;
-            selectedTabPersonas.Background = Brushes.LightGray;
+                selectedTabPersonas = (TextBlock)sender;
+                selectedTabPersonas.Background = Brushes.LightGray;
 
-            if (selectedTabComponentes != null)
-                selectedTabComponentes.Background = Brushes.Transparent;
+                if (selectedTabComponentes != null)
+                    selectedTabComponentes.Background = Brushes.Transparent;
 
-            if (selectedTabRelacion != null)
-                selectedTabRelacion.Background = Brushes.Transparent;
+                if (selectedTabRelacion != null)
+                    selectedTabRelacion.Background = Brushes.Transparent;
 
-            if (selectedTabResumen != null)
-                selectedTabResumen.Background = Brushes.Transparent;
+                if (selectedTabResumen != null)
+                    selectedTabResumen.Background = Brushes.Transparent;
 
-            if (selectedTabConfiguracion != null)
-                selectedTabConfiguracion.Background = Brushes.Transparent;
+                if (selectedTabConfiguracion != null)
+                    selectedTabConfiguracion.Background = Brushes.Transparent;
 
-            ActualizarDatosDelExcel();
+                ActualizarDatosDelExcel();
 
-            UsuariosListView.ItemsSource = null;
-            UsuariosListView.ItemsSource = DatosCargaExcelPersonas;
-
+                UsuariosListView.ItemsSource = null;
+                UsuariosListView.ItemsSource = DatosCargaExcelPersonas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         TextBlock selectedTabComponentes = new TextBlock();
         private void rbComponentes_Checked(object sender, RoutedEventArgs e)
         {
-            var seccion = "Componentes";
-            if (SeccionActual == seccion) return;
+            try
+            {
+                var seccion = "Componentes";
+                if (SeccionActual == seccion) return;
 
-            SeccionActual = seccion;
+                SeccionActual = seccion;
 
-            grdComponentes.Visibility = Visibility.Visible;
-            grdPersonas.Visibility = Visibility.Collapsed;
-            grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
-            grdResumen.Visibility = Visibility.Collapsed;
-            grdConfiguracion.Visibility = Visibility.Collapsed;
+                grdComponentes.Visibility = Visibility.Visible;
+                grdPersonas.Visibility = Visibility.Collapsed;
+                grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
+                grdResumen.Visibility = Visibility.Collapsed;
+                grdConfiguracion.Visibility = Visibility.Collapsed;
 
-            //btnSiguienteComponentes_Click(null, null);
+                //btnSiguienteComponentes_Click(null, null);
 
-            //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
+                //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
 
-            selectedTabComponentes = (TextBlock)sender;
-            selectedTabComponentes.Background = Brushes.LightGray;
+                selectedTabComponentes = (TextBlock)sender;
+                selectedTabComponentes.Background = Brushes.LightGray;
 
-            if (selectedTabPersonas != null)
-                selectedTabPersonas.Background = Brushes.Transparent;
+                if (selectedTabPersonas != null)
+                    selectedTabPersonas.Background = Brushes.Transparent;
 
-            if (selectedTabRelacion != null)
-                selectedTabRelacion.Background = Brushes.Transparent;
+                if (selectedTabRelacion != null)
+                    selectedTabRelacion.Background = Brushes.Transparent;
 
-            if (selectedTabResumen != null)
-                selectedTabResumen.Background = Brushes.Transparent;
+                if (selectedTabResumen != null)
+                    selectedTabResumen.Background = Brushes.Transparent;
 
-            if (selectedTabConfiguracion != null)
-                selectedTabConfiguracion.Background = Brushes.Transparent;
+                if (selectedTabConfiguracion != null)
+                    selectedTabConfiguracion.Background = Brushes.Transparent;
 
-            ActualizarDatosDelExcel();
+                ActualizarDatosDelExcel();
 
-            ComponentesListView.ItemsSource = null;
-            ComponentesListView.ItemsSource = DatosCargaExcelComponente;
+                ComponentesListView.ItemsSource = null;
+                ComponentesListView.ItemsSource = DatosCargaExcelComponente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         TextBlock selectedTabRelacion = new TextBlock();
         private void rbRelacionComponentePersona_Checked(object sender, RoutedEventArgs e)
         {
-            var seccion = "Relación";
-            if (SeccionActual == seccion) return;
-
-            SeccionActual = seccion;
-
-            grdRelacionComponentePersona.Visibility = Visibility.Visible;
-            grdComponentes.Visibility = Visibility.Collapsed;
-            grdPersonas.Visibility = Visibility.Collapsed;
-            grdResumen.Visibility = Visibility.Collapsed;
-            grdConfiguracion.Visibility = Visibility.Collapsed;
-
-            //btnSiguienteComponentes_Click(null, null);
-
-            //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
-
-            selectedTabRelacion = (TextBlock)sender;
-            selectedTabRelacion.Background = Brushes.LightGray;
-
-            if (selectedTabPersonas != null)
-                selectedTabPersonas.Background = Brushes.Transparent;
-
-            if (selectedTabComponentes != null)
-                selectedTabComponentes.Background = Brushes.Transparent;
-
-            if (selectedTabResumen != null)
-                selectedTabResumen.Background = Brushes.Transparent;
-
-            if (selectedTabConfiguracion != null)
-                selectedTabConfiguracion.Background = Brushes.Transparent;
-
-            ActualizarDatosDelExcel();
-
-            if (DatosCargaExcelComponente != null && DatosCargaExcelComponente.Count > 0)
+            try
             {
-                cbComponente.ItemsSource = DatosCargaExcelComponente;
-                cbComponente.DisplayMemberPath = "Tipo";
+                var seccion = "Relación";
+                if (SeccionActual == seccion) return;
 
-                if (cbComponente.SelectedItem == null )
-                    cbComponente.SelectedIndex = SelectIndexComponenteCB;
+                SeccionActual = seccion;
+
+                grdRelacionComponentePersona.Visibility = Visibility.Visible;
+                grdComponentes.Visibility = Visibility.Collapsed;
+                grdPersonas.Visibility = Visibility.Collapsed;
+                grdResumen.Visibility = Visibility.Collapsed;
+                grdConfiguracion.Visibility = Visibility.Collapsed;
+
+                //btnSiguienteComponentes_Click(null, null);
+
+                //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
+
+                selectedTabRelacion = (TextBlock)sender;
+                selectedTabRelacion.Background = Brushes.LightGray;
+
+                if (selectedTabPersonas != null)
+                    selectedTabPersonas.Background = Brushes.Transparent;
+
+                if (selectedTabComponentes != null)
+                    selectedTabComponentes.Background = Brushes.Transparent;
+
+                if (selectedTabResumen != null)
+                    selectedTabResumen.Background = Brushes.Transparent;
+
+                if (selectedTabConfiguracion != null)
+                    selectedTabConfiguracion.Background = Brushes.Transparent;
+
+                ActualizarDatosDelExcel();
+
+                if (DatosCargaExcelComponente != null && DatosCargaExcelComponente.Count > 0)
+                {
+                    cbComponente.ItemsSource = DatosCargaExcelComponente;
+                    cbComponente.DisplayMemberPath = "Tipo";
+
+                    if (cbComponente.SelectedItem == null)
+                        cbComponente.SelectedIndex = SelectIndexComponenteCB;
+                }
+
+                cbComponente_SelectionChanged(null, null);
+                //Seleccion
             }
-
-            cbComponente_SelectionChanged(null, null);
-            //Seleccion
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         TextBlock selectedTabResumen = new TextBlock();
         private void rbResumen_Checked(object sender, RoutedEventArgs e)
         {
-            var seccion = "Resumen";
-            if (SeccionActual == seccion) return;
-
-            SeccionActual = seccion;
-
-            grdResumen.Visibility = Visibility.Visible;
-            grdComponentes.Visibility = Visibility.Collapsed;
-            grdPersonas.Visibility = Visibility.Collapsed;
-            grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
-            grdConfiguracion.Visibility = Visibility.Collapsed;
-
-            //btnSiguienteComponentes_Click(null, null);
-
-            //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
-
-            selectedTabResumen = (TextBlock)sender;
-            selectedTabResumen.Background = Brushes.LightGray;
-
-            if (selectedTabPersonas != null)
-                selectedTabPersonas.Background = Brushes.Transparent;
-
-            if (selectedTabComponentes != null)
-                selectedTabComponentes.Background = Brushes.Transparent;
-
-            if (selectedTabRelacion != null)
-                selectedTabRelacion.Background = Brushes.Transparent;
-
-            if (selectedTabConfiguracion != null)
-                selectedTabConfiguracion.Background = Brushes.Transparent;
-
-            ActualizarDatosDelExcel();
-
-            //ResumenListView.ItemsSource = null;
-            //ResumenListView.ItemsSource = DatosCargaExcelRelacion;
-
-            if (DatosCargaExcelRelacion == null) return;
-
-            var items = new List<Item>();
-            var entidad1 = new Entidad { Nombre = "Componente" };
-            var entidad2 = new Entidad { Nombre = "Persona" };
-
-            foreach (var itemComponente in DatosCargaExcelComponente.OrderBy(s=>s.Tipo))
+            try
             {
-                var sumaPorcentaje = DatosCargaExcelRelacion.Where(a=>a.IDCOMPONENTE == itemComponente.ID && a.Porcentaje != null).Sum(s => s.Porcentaje);
-                var sumaCantidad = DatosCargaExcelRelacion.Where(a=>a.IDCOMPONENTE == itemComponente.ID && a.Cantidad != null).Sum(s => s.Cantidad);
-                items.Add(new Item { 
-                    Nombre = itemComponente.Tipo, 
-                    Cantidad = (sumaCantidad != null ? ((double)sumaCantidad).ToString("0.##") + "/" : "0/") + (itemComponente.Cantidad != null ? ((double)itemComponente.Cantidad).ToString("0.##") + "€" : "0 €"),
-                    //Total = sumaCantidad != null ? ((double)sumaCantidad).ToString("0.##") + "/" : "0/" + itemComponente.Cantidad != null ? ((double)itemComponente.Cantidad).ToString("0.##") + "€" : "0 €",
-                    Porcentaje = sumaPorcentaje!= null? ((double)sumaPorcentaje).ToString("0.##") + "%" : "0 %", 
-                    Entidad = entidad1 });
+                var seccion = "Resumen";
+                if (SeccionActual == seccion) return;
 
-                foreach (var itemPersona in DatosCargaExcelRelacion.Where(a => a.IDCOMPONENTE == itemComponente.ID).OrderBy(s=>s.NombrePersona))
+                SeccionActual = seccion;
+
+                grdResumen.Visibility = Visibility.Visible;
+                grdComponentes.Visibility = Visibility.Collapsed;
+                grdPersonas.Visibility = Visibility.Collapsed;
+                grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
+                grdConfiguracion.Visibility = Visibility.Collapsed;
+
+                //btnSiguienteComponentes_Click(null, null);
+
+                //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
+
+                selectedTabResumen = (TextBlock)sender;
+                selectedTabResumen.Background = Brushes.LightGray;
+
+                if (selectedTabPersonas != null)
+                    selectedTabPersonas.Background = Brushes.Transparent;
+
+                if (selectedTabComponentes != null)
+                    selectedTabComponentes.Background = Brushes.Transparent;
+
+                if (selectedTabRelacion != null)
+                    selectedTabRelacion.Background = Brushes.Transparent;
+
+                if (selectedTabConfiguracion != null)
+                    selectedTabConfiguracion.Background = Brushes.Transparent;
+
+                ActualizarDatosDelExcel();
+
+                //ResumenListView.ItemsSource = null;
+                //ResumenListView.ItemsSource = DatosCargaExcelRelacion;
+
+                if (DatosCargaExcelRelacion == null) return;
+
+                var items = new List<Item>();
+                var entidad1 = new Entidad { Nombre = "Componente" };
+                var entidad2 = new Entidad { Nombre = "Persona" };
+
+                foreach (var itemComponente in DatosCargaExcelComponente.OrderBy(s => s.Tipo))
                 {
+                    var sumaPorcentaje = DatosCargaExcelRelacion.Where(a => a.IDCOMPONENTE == itemComponente.ID && a.Porcentaje != null).Sum(s => s.Porcentaje);
+                    var sumaCantidad = DatosCargaExcelRelacion.Where(a => a.IDCOMPONENTE == itemComponente.ID && a.Cantidad != null).Sum(s => s.Cantidad);
                     items.Add(new Item
                     {
-                        Nombre = itemPersona.NombrePersona,
-                        Cantidad = itemPersona.Cantidad != null ? ((double)itemPersona.Cantidad).ToString("0.##") + "€" : "0 €",
-                        Total = "",
-                        Porcentaje = itemPersona.Porcentaje != null ? ((double)itemPersona.Porcentaje).ToString("0.##") + "%" : "0 %",
-                        Entidad = entidad2
+                        Nombre = itemComponente.Tipo,
+                        Cantidad = (sumaCantidad != null ? ((double)sumaCantidad).ToString("0.##") + "/" : "0/") + (itemComponente.Cantidad != null ? ((double)itemComponente.Cantidad).ToString("0.##") + "€" : "0 €"),
+                        //Total = sumaCantidad != null ? ((double)sumaCantidad).ToString("0.##") + "/" : "0/" + itemComponente.Cantidad != null ? ((double)itemComponente.Cantidad).ToString("0.##") + "€" : "0 €",
+                        Porcentaje = sumaPorcentaje != null ? ((double)sumaPorcentaje).ToString("0.##") + "%" : "0 %",
+                        Entidad = entidad1
                     });
+
+                    foreach (var itemPersona in DatosCargaExcelRelacion.Where(a => a.IDCOMPONENTE == itemComponente.ID).OrderBy(s => s.NombrePersona))
+                    {
+                        items.Add(new Item
+                        {
+                            Nombre = itemPersona.NombrePersona,
+                            Cantidad = itemPersona.Cantidad != null ? ((double)itemPersona.Cantidad).ToString("0.##") + "€" : "0 €",
+                            Total = "",
+                            Porcentaje = itemPersona.Porcentaje != null ? ((double)itemPersona.Porcentaje).ToString("0.##") + "%" : "0 %",
+                            Entidad = entidad2
+                        });
+                    }
                 }
+
+                ListBoxItems.ItemsSource = items;
             }
-
-            ListBoxItems.ItemsSource = items;
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         TextBlock selectedTabConfiguracion = new TextBlock();
         private void rbConfiguracion_Checked(object sender, RoutedEventArgs e)
         {
-            var seccion = "Configuracion";
-            if (SeccionActual == seccion) return;
+            try
+            {
+                var seccion = "Configuracion";
+                if (SeccionActual == seccion) return;
 
-            SeccionActual = seccion;
+                SeccionActual = seccion;
 
-            grdConfiguracion.Visibility = Visibility.Visible;
-            grdComponentes.Visibility = Visibility.Collapsed;
-            grdPersonas.Visibility = Visibility.Collapsed;
-            grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
-            grdResumen.Visibility = Visibility.Collapsed;
+                grdConfiguracion.Visibility = Visibility.Visible;
+                grdComponentes.Visibility = Visibility.Collapsed;
+                grdPersonas.Visibility = Visibility.Collapsed;
+                grdRelacionComponentePersona.Visibility = Visibility.Collapsed;
+                grdResumen.Visibility = Visibility.Collapsed;
 
-            //btnSiguienteComponentes_Click(null, null);
+                //btnSiguienteComponentes_Click(null, null);
 
-            //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
+                //txtCountTotal.Text = (DatosCargaExcelComponentes != null ? DatosCargaExcelComponentes.Count : 0) + " de " + (DatosCargaExcel != null ? DatosCargaExcel.Count : 0);
 
-            selectedTabConfiguracion = (TextBlock)sender;
-            selectedTabConfiguracion.Background = Brushes.LightGray;
+                selectedTabConfiguracion = (TextBlock)sender;
+                selectedTabConfiguracion.Background = Brushes.LightGray;
 
-            if (selectedTabPersonas != null)
-                selectedTabPersonas.Background = Brushes.Transparent;
+                if (selectedTabPersonas != null)
+                    selectedTabPersonas.Background = Brushes.Transparent;
 
-            if (selectedTabComponentes != null)
-                selectedTabComponentes.Background = Brushes.Transparent;
+                if (selectedTabComponentes != null)
+                    selectedTabComponentes.Background = Brushes.Transparent;
 
-            if (selectedTabRelacion != null)
-                selectedTabRelacion.Background = Brushes.Transparent;
+                if (selectedTabRelacion != null)
+                    selectedTabRelacion.Background = Brushes.Transparent;
 
-            if (selectedTabResumen != null)
-                selectedTabResumen.Background = Brushes.Transparent;
+                if (selectedTabResumen != null)
+                    selectedTabResumen.Background = Brushes.Transparent;
 
-            ActualizarDatosDelExcel();
+                ActualizarDatosDelExcel();
 
-            //ResumenListView.ItemsSource = null;
-            //ResumenListView.ItemsSource = DatosCargaExcelRelacion;
+                //ResumenListView.ItemsSource = null;
+                //ResumenListView.ItemsSource = DatosCargaExcelRelacion;
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region Personas
@@ -384,10 +419,8 @@ namespace Inherit
             }
             catch (Exception ex)
             {
-                throw ex;
-
+                MessageBox.Show(ex.Message);
             }
-
         }
 
         private void EditIcon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -408,8 +441,6 @@ namespace Inherit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw ex;
-
             }
 
         }
@@ -448,7 +479,6 @@ namespace Inherit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw ex;
             }
         }
         #endregion
@@ -465,8 +495,7 @@ namespace Inherit
             }
             catch (Exception ex)
             {
-                throw ex;
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -487,8 +516,7 @@ namespace Inherit
             }
             catch (Exception ex)
             {
-                throw ex;
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -525,7 +553,7 @@ namespace Inherit
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -611,24 +639,32 @@ namespace Inherit
         }
 
         public void ActualizarDatosComponenteEnRelacionComponentePersona()
-        {         
-            var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
-            if (selectedItem == null) return; 
-
-            double cantidadActual = 0;
-            double porcentajeActual = 0;
-
-            var itemsSource = RelacionListView.ItemsSource;
-            if (itemsSource is IEnumerable<RelacionComponentePersonaExcel> enumerable)
+        {
+            try
             {
-                var personas = enumerable.Where(s => s.IDCOMPONENTE == selectedItem.ID);
+                var selectedItem = cbComponente.SelectedItem as ComponenteExcel;
+                if (selectedItem == null) return;
 
-                cantidadActual = personas.Where(d=>d.Cantidad != null).Sum(s => (double)s.Cantidad);
-                porcentajeActual = personas.Where(d => d.Porcentaje != null).Sum(s => (double)s.Porcentaje);
+                double cantidadActual = 0;
+                double porcentajeActual = 0;
+
+                var itemsSource = RelacionListView.ItemsSource;
+                if (itemsSource is IEnumerable<RelacionComponentePersonaExcel> enumerable)
+                {
+                    var personas = enumerable.Where(s => s.IDCOMPONENTE == selectedItem.ID);
+
+                    cantidadActual = personas.Where(d => d.Cantidad != null).Sum(s => (double)s.Cantidad);
+                    porcentajeActual = personas.Where(d => d.Porcentaje != null).Sum(s => (double)s.Porcentaje);
+                }
+
+                lbCantidadComponente.Content = cantidadActual.ToString("0.##") + "/" + selectedItem.Cantidad + " €";
+                lbPorcentajeComponente.Content = porcentajeActual.ToString("0.##") + "/100 %";
             }
-
-            lbCantidadComponente.Content = cantidadActual.ToString("0.##") + "/" +selectedItem.Cantidad + " €";
-            lbPorcentajeComponente.Content = porcentajeActual.ToString("0.##") + "/100 %";
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         private void CrearRelacion_Click(object sender, RoutedEventArgs e)
@@ -641,8 +677,6 @@ namespace Inherit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw ex;
-
             }
         }
 
@@ -660,6 +694,11 @@ namespace Inherit
                 if (itemsSource is IEnumerable<RelacionComponentePersonaExcel> enumerable)
                 {
                     //var personas = enumerable.Where(s => s.IDCOMPONENTE == selectedItem.ID);
+                    if (enumerable.Count() == 0)
+                    {
+                        MessageBox.Show("Es necesario incluir al menos una persona");
+                        return;
+                    }
 
                     var porcentajeRepartir = 100 / enumerable.Count();
 
@@ -677,8 +716,6 @@ namespace Inherit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw ex;
-
             }
         }
 
@@ -702,7 +739,6 @@ namespace Inherit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw;
             }           
         }
 
@@ -760,7 +796,6 @@ namespace Inherit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw;
             }
 
         }
@@ -785,7 +820,6 @@ namespace Inherit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw;
             }
 
         }
@@ -828,7 +862,6 @@ namespace Inherit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw;
             }
 
         }
@@ -859,7 +892,6 @@ namespace Inherit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw;
             }
 
         }
